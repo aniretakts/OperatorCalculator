@@ -1,0 +1,196 @@
+﻿<Window x:Class="OperatorCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OperatorCalculator"
+        mc:Ignorable="d"
+        Title="Operator Calculator" Height="500" Width="900"
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize"
+        Background="#1E3D59">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Background="#FFC13B"-->
+        <Grid Background="#FA980B"
+              Grid.ColumnSpan="2">
+            <!--MouseDown="Grid_MouseDown">-->
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Website"
+                       Foreground="#F5F0E1"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontWeight="Medium"/>
+
+            <TextBlock Text="News"
+                    Foreground="#F5F0E1"
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontWeight="Medium"/>
+
+            <TextBlock Text="About"
+                Foreground="#F5F0E1"
+                Grid.Column="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontWeight="Medium"/>
+
+        </Grid>
+
+        
+        <!--left column-->
+
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Margin="50">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="myImg" Width="100" Height="80" Source="/Images/operations.png"
+                           RenderOptions.BitmapScalingMode="Fant"/>
+                    <TextBlock Text="Operators &#10; Calculator"
+                           Foreground="#F5F0E1"
+                           FontSize="30"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+                </StackPanel>
+                <TextBlock Text="Hello!"
+                           Foreground="#F5F0E1"
+                           FontSize="30"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock Text="Welcome to your operators calculator"
+                           Foreground="#F5F0E1"
+                           FontSize="20"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock Text="Please insert the numbers and the result you want to get, and we will find the operator for you ;)"
+                           Foreground="#F5F0E1"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"/>
+
+            </StackPanel>
+        </StackPanel>
+        
+        
+        <!--right column-->
+        <Grid Grid.Row="2"
+              Grid.Column="2">
+
+            <StackPanel Grid.Row="2"
+                    VerticalAlignment="Center"
+                    Margin="40">
+                <TextBlock Text="Please insert the numbers and the result you want to get, and we will find the operator for you ;)"
+                           Foreground="#F5F0E1"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"/>
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,15,0,15">
+                    <TextBox Name="UserInput1" PreviewTextInput="NumberValidationTextBox" Width="50" Margin="0,15,15,15"/>
+                    <TextBlock Text="?"
+                           Foreground="#F5F0E1"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="0,15,15,15"/>
+
+                    <TextBox Name="UserInput2" PreviewTextInput="NumberValidationTextBox" Width="50" Margin="0,15,15,15" />
+                    <TextBlock Text="="
+                           Foreground="#F5F0E1"
+                           FontSize="15"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Margin="0,15,15,15"/>
+
+                    <TextBox Name="UserInput3" PreviewTextInput="NumberValidationTextBox" Width="50" Margin="0,15,15,15" />
+
+                </StackPanel>
+
+
+             <!--Button & Result-->
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,15,0,0">
+
+                    <Button Content="Calculate"
+                                Foreground="#F5F0E1"
+                                FontSize="14"
+                                FontWeight="Medium"
+                                Margin="0,0,10, 0"
+                                Click="Button_Calculate">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#FF6E40"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFC13B"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="100" Height="25"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,15,0,0">
+                    <TextBlock Name="Result" 
+                                   Margin="5"
+                                   Foreground="#F5F0E1"
+                                   FontSize="14"
+                                   FontWeight="Medium"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    
+    
+    
+    
+    
+    
+    </Grid>
+
+</Window>
+
+
